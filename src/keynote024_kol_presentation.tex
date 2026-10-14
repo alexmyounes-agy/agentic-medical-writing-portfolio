@@ -1,0 +1,469 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% --- THEME & PACKAGES ---
+\usetheme{metropolis}
+\usefonttheme{professionalfonts}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% --- PROFESSIONAL ONCOLOGY PALETTE ---
+\definecolor{DeepNavy}{HTML}{0A2540}       % Primary brand
+\definecolor{MedTeal}{HTML}{00A98A}        % Secondary brand / Pembrolizumab
+\definecolor{BrightCyan}{HTML}{00A3EB}     % Highlighting
+\definecolor{AlertRed}{HTML}{E11D48}       % Chemotherapy / Control / Toxicity
+\definecolor{CardBg}{HTML}{F8FAFC}         % Crisp neutral card background
+\definecolor{BorderGray}{HTML}{D1D5DB}     % Border line
+\definecolor{TextDark}{HTML}{0F172A}       % Body text
+\definecolor{TextMuted}{HTML}{64748B}      % Muted subtext
+\definecolor{SuccessGreen}{HTML}{10B981}   % Favourable outcome
+\definecolor{GoldAccent}{HTML}{D97706}     % Advisory / warning / note
+
+% Set Metropolis theme colors
+\setbeamercolor{palette primary}{bg=DeepNavy, fg=white}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=TextDark}
+\setbeamercolor{frametitle}{bg=DeepNavy, fg=white}
+\setbeamercolor{progress bar}{fg=MedTeal, bg=TextMuted!30}
+
+% Adjust frametitle geometry
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=14pt,rightskip=14pt,ht=3.2ex,dp=1.2ex]{frametitle}
+    \textbf{\insertframetitle}
+  \end{beamercolorbox}%
+}
+
+% Custom Title Page Template (Zero Overfull Vbox)
+\setbeamertemplate{title page}{%
+  \begin{minipage}{\textwidth}
+    \vspace{0.5em}
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\textbf{\inserttitle}}\par
+    \vspace{0.4em}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}\par
+    \vspace{0.6em}
+    {\color{MedTeal}\hrule height 0.8pt}\par
+    \vspace{0.8em}
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\par
+    \vspace{0.3em}
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}\par
+    \vspace{0.4em}
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}\par
+  \end{minipage}%
+}
+
+% Sleek Left-Bar Action Banner
+\newtcolorbox{actionbanner}{
+  enhanced,
+  boxrule=0pt,
+  leftrule=3.5pt,
+  colframe=MedTeal,
+  colback=MedTeal!7,
+  arc=0mm,
+  left=8pt,right=8pt,top=3pt,bottom=3pt,
+  boxsep=0pt,
+  halign=flush left,
+  fontupper=\small\bfseries\color{DeepNavy}
+}
+
+% Standard Rounded Stat Card
+\newtcolorbox{statcard}[2][]{
+  enhanced,
+  colback=CardBg,
+  colframe=#2,
+  arc=1.5mm,
+  boxrule=0.75pt,
+  left=7pt,right=7pt,top=3.5pt,bottom=3.5pt,
+  boxsep=0pt,
+  halign=flush left,
+  #1
+}
+
+% Summary / Conclusion Callout Card
+\newtcolorbox{calloutcard}[1][]{
+  enhanced,
+  colback=DeepNavy!5,
+  colframe=DeepNavy,
+  arc=1.5mm,
+  boxrule=0.75pt,
+  left=8pt,right=8pt,top=3.5pt,bottom=3.5pt,
+  boxsep=0pt,
+  halign=flush left,
+  #1
+}
+
+% --- TITLE METADATA ---
+\title[KEYNOTE-024: Clinical Deconstruction]{KEYNOTE-024: Clinical Deconstruction\\[2pt]\& Scientific Narrative}
+\subtitle{Pembrolizumab Monotherapy vs. Chemotherapy in First-Line PD-L1--High Advanced NSCLC}
+\author{\texorpdfstring{\textbf{Alex Maria Younes}, MBioMedSci \quad \scriptsize(Medical Affairs Portfolio Exercise)}{Alex Maria Younes, MBioMedSci}}
+\institute{Thoracic Oncology Medical Communications | Clinical Study Review}
+\date{\texorpdfstring{N Engl J Med 2016; 375:1823--1833 \quad$|$\quad ClinicalTrials.gov: NCT02142738}{N Engl J Med 2016; 375:1823-1833}}
+
+\begin{document}
+
+% ==================== TITLE SLIDE ====================
+{
+\setbeamercolor{background canvas}{bg=DeepNavy}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=BrightCyan}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{institute}{fg=CardBg!80}
+\setbeamercolor{date}{fg=MedTeal}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+}
+
+% ==================== SLIDE 1: CLINICAL LANDSCAPE ====================
+\begin{frame}{Slide 1: Clinical Landscape \& Frontline Unmet Need}
+\begin{actionbanner}
+First-Line Chemotherapy Offers Limited Long-Term Survival in Advanced NSCLC, Mandating Biomarker-Driven Regimens
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.61\textwidth}
+    \begin{statcard}{BorderGray}
+      {\footnotesize\textbf{\color{DeepNavy}The Clinical Status Quo Prior to Checkpoint Blockade:}}
+      \vskip 3pt
+      \scriptsize
+      \textbullet\ \textbf{Global Disease Burden:} Lung cancer remains the primary cause of cancer death worldwide; NSCLC accounts for $\sim$85\% of cases, typically diagnosed at Stage IV.\\[2.5pt]
+      \textbullet\ \textbf{Therapeutic Ceiling of Platinum Duos:}\\
+      \hspace*{8pt}-- Standard carboplatin/cisplatin doublets produce median PFS of \textbf{4--6 months}.\\
+      \hspace*{8pt}-- Median Overall Survival plateaus at \textbf{10--12 months}; 5-year OS $<5\%$.\\[2.5pt]
+      \textbullet\ \textbf{High-Volume Cytotoxic Morbidity:} Cumulative myelosuppression, nephrotoxicity, and intractable nausea limit treatment duration.\\[2.5pt]
+      \textbullet\ \textbf{The Precision Therapy Gap:} Targeted TKIs exist for \textit{EGFR/ALK} alterations ($<$15\%); the remaining \textbf{$\sim$85\% lack targetable driver oncogenes}.
+    \end{statcard}
+  \end{column}
+
+  \begin{column}{0.36\textwidth}
+    \begin{statcard}{AlertRed!70}
+      \centering
+      {\scriptsize\textbf{\color{AlertRed}HISTORICAL BENCHMARKS}}\\[4pt]
+      {\large\textbf{\color{TextDark}4--6 Months}}\\[-1pt]
+      {\tiny\color{TextMuted} Historical Median PFS (Chemotherapy)}\\[5pt]
+      {\large\textbf{\color{TextDark}$<$5\% 5-Year OS}}\\[-1pt]
+      {\tiny\color{TextMuted} Long-Term Survival Ceiling (Unselected NSCLC)}\\[5pt]
+      {\large\textbf{\color{TextDark}$\sim$85\% Wild-Type}}\\[-1pt]
+      {\tiny\color{TextMuted} Advanced NSCLC Patients Without Driver Mutations}
+    \end{statcard}
+    \vskip 4pt
+    {\raggedleft\tiny\color{TextMuted}Source: Reck M, et al. N Engl J Med 2016; 375:1823--33.\par}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ==================== SLIDE 2: MECHANISM OF ACTION ====================
+\begin{frame}{Slide 2: Biological Mechanism of Action (MOA)}
+\begin{actionbanner}
+Tumours Exploit the PD-1/PD-L1 Pathway for Immune Evasion; Pembrolizumab Restores Endogenous Cytolytic T-Cell Attack
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{AlertRed!70}
+      {\scriptsize\textbf{\color{AlertRed}A. TUMOUR IMMUNE EVASION}}
+      \vskip 3pt
+      \tiny
+      \textbullet\ Tumour cells upregulate surface \textbf{PD-L1} in response to endogenous interferon-$\gamma$ signals.\\[2pt]
+      \textbullet\ PD-L1 binds \textbf{PD-1 receptors} on tumour-infiltrating CD8+ cytotoxic T-lymphocytes.\\[2pt]
+      \textbullet\ Transmits an inhibitory intracellular signal, triggering \textbf{T-cell exhaustion, anergy, and apoptosis}.
+    \end{statcard}
+  \end{column}
+  
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{MedTeal}
+      {\scriptsize\textbf{\color{MedTeal}B. PEMBROLIZUMAB CHECKPOINT BLOCKADE}}
+      \vskip 3pt
+      \tiny
+      \textbullet\ High-affinity, \textbf{humanized IgG4 monoclonal antibody}.\\[2pt]
+      \textbullet\ Selectively caps PD-1; blocks interaction with \textbf{PD-L1 and PD-L2}.\\[2pt]
+      \textbullet\ Engineered IgG4 isotype \textbf{avoids ADCC} (prevents cytotoxic depletion of endogenous T-cells).\\[2pt]
+      \textbullet\ Disinhibits anti-tumour immunity, restoring \textbf{T-cell proliferation and cytolytic granule release}.
+    \end{statcard}
+  \end{column}
+\end{columns}
+
+\vspace{3pt}
+
+\begin{calloutcard}
+  \scriptsize\textbf{The Biomarker Hypothesis:} High tumour surface PD-L1 expression (TPS $\ge 50\%$) identifies tumours actively suppressing an endogenous T-cell immune response---creating an optimal primed substrate for checkpoint disinhibition.
+\end{calloutcard}
+\end{frame}
+
+% ==================== SLIDE 3: STUDY DESIGN ====================
+\begin{frame}{Slide 3: KEYNOTE-024 Study Design \& Biomarker Enrichment}
+\begin{actionbanner}
+Randomized Phase III Design Evaluated Pembrolizumab Monotherapy vs. Standard Chemotherapy in PD-L1 TPS $\ge 50\%$ NSCLC
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.60\textwidth}
+    \begin{statcard}{BorderGray}
+      {\footnotesize\textbf{\color{DeepNavy}Trial Flow \& Treatment Architecture (N = 305):}}
+      \vskip 2pt
+      \scriptsize
+      \textbullet\ \textbf{Patient Eligibility:} Advanced/metastatic Stage IV NSCLC; Treatment-na\"\i ve; ECOG PS 0--1; No sensitizing \textit{EGFR} mutations or \textit{ALK} translocations.\\[2pt]
+      \textbullet\ \textbf{Biomarker Gate:} PD-L1 Tumour Proportion Score (TPS) $\ge 50\%$ assessed by central laboratory via \textbf{IHC 22C3 pharmDx assay}.\\[2pt]
+      \textbullet\ \textbf{1:1 Randomisation Architecture:}\\
+      \hspace*{8pt}-- \textbf{Pembrolizumab Arm (n = 154):} Fixed 200 mg IV q3w for up to 35 cycles (2 years) or until progression/intolerable toxicity.\\
+      \hspace*{8pt}-- \textbf{Chemotherapy Arm (n = 151):} Platinum doublet (carboplatin/cisplatin + pemetrexed/gemcitabine/paclitaxel) + optional pemetrexed maintenance.\\[2pt]
+      \textbullet\ \textbf{Ethical Cross-Over Protocol:} Progression on chemo allowed switch to pembrolizumab (\textbf{43.7\% on-study cross-over}).
+    \end{statcard}
+  \end{column}
+  
+  \begin{column}{0.37\textwidth}
+    \begin{statcard}{MedTeal}
+      {\footnotesize\textbf{\color{MedTeal}BIOMARKER STRATEGY}}
+      \vskip 2pt
+      \scriptsize
+      \textbf{Why TPS $\ge 50\%$ Threshold?}\\
+      In early KEYNOTE-001 data, TPS $\ge 50\%$ marked the biological inflection point where ORR tripled ($\sim$45\% vs $\sim$15\% in TPS $<$50\%). Enriched for highest-probability cohort to prove monotherapy superiority over doublet chemotherapy.
+      \vskip 4pt
+      \textbf{Clinical Prevalence:}\\
+      1,945 screened $\rightarrow$ \textbf{30.2\% (500/1,653)} had TPS $\ge 50\%$ (1 in 3 frontline patients).
+    \end{statcard}
+    \vskip 3pt
+    {\raggedleft\tiny\color{TextMuted}Source: Reck M, et al. N Engl J Med 2016; 375:1823--1833.\par}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ==================== SLIDE 4: PRIMARY ENDPOINT (PFS) ====================
+\begin{frame}{Slide 4: Primary Endpoint: Progression-Free Survival (PFS)}
+\begin{actionbanner}
+Pembrolizumab Monotherapy Doubled Median PFS to 10.3 Months, Halving the Risk of Disease Progression or Death
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{DeepNavy}
+      {\scriptsize\textbf{\color{DeepNavy}BLINDED INDEPENDENT REVIEW (RECIST v1.1)}}\\[3pt]
+      \scriptsize
+      \textbf{\color{MedTeal}Pembrolizumab: 10.3 mo} \tiny(95\% CI: 6.7--NR)\\
+      \textbf{\color{AlertRed}Chemotherapy: 6.0 mo} \tiny(95\% CI: 4.2--6.2)\\[3pt]
+      \normalsize\textbf{\color{DeepNavy}HR = 0.50} \scriptsize(95\% CI: 0.37--0.68) \quad \textbf{\color{SuccessGreen}P $<$ 0.001}\\[3pt]
+      \hrule height 0.4pt\vskip 3pt
+      \textbf{Landmark PFS Rates (6 \& 12 Months):}\\
+      \textbullet\ \textbf{6-Month PFS Rate:} 62.1\% (pembro) vs. 50.3\% (chemo)\\
+      \textbullet\ \textbf{12-Month PFS Rate:} \textbf{48.0\%} vs. \textbf{21.2\%} (more than double)
+    \end{statcard}
+  \end{column}
+
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{BorderGray}
+      {\scriptsize\textbf{\color{DeepNavy}KEY CLINICAL INSIGHTS}}
+      \vskip 3pt
+      \tiny
+      \textbullet\ \textbf{Early \& Widening Separation:} Kaplan-Meier curves diverge at first restaging scan (Week 9) and separation expands through Month 18.\\[3pt]
+      \textbullet\ \textbf{Subgroup Consistency:} Hazard ratio favoured pembrolizumab across all pre-specified baseline subgroups:
+      \begin{itemize}\tiny\setlength{\itemsep}{1pt}
+        \item Age: $<$65 (HR 0.61) and $\ge$65 (HR 0.45)
+        \item Histology: Non-squamous (HR 0.55) and Squamous (HR 0.35)
+        \item Performance Status: ECOG 0 (HR 0.50) and ECOG 1 (HR 0.52)
+      \end{itemize}
+      \vskip 2pt
+      \textbullet\ \textbf{Early IDMC Unblinding:} Due to overwhelming PFS superiority, early trial unblinding was recommended by the IDMC.
+    \end{statcard}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ==================== SLIDE 5: OVERALL SURVIVAL (OS) ====================
+\begin{frame}{Slide 5: Secondary Efficacy: Overall Survival (OS)}
+\begin{actionbanner}
+Pembrolizumab Conferred a Significant 40\% Reduction in Mortality Despite Substantial Control-Arm Cross-Over
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{DeepNavy}
+      \centering
+      {\scriptsize\textbf{\color{DeepNavy}INTERIM OVERALL SURVIVAL ANALYSIS}}\\[4pt]
+      {\large\textbf{\color{DeepNavy}HR = 0.60} \quad \normalsize\textbf{(95\% CI: 0.41--0.89)}}\\[2pt]
+      {\small\textbf{\color{SuccessGreen}P = 0.005 (40\% Mortality Reduction)}}\\[5pt]
+      {\scriptsize\textbf{6-Month OS Rate:} \textbf{80.2\%} (pembro) vs. \textbf{72.4\%} (chemo)}\\[2pt]
+      {\scriptsize\textbf{12-Month OS Rate:} \textbf{70.3\%} (pembro) vs. \textbf{54.0\%} (chemo)}
+    \end{statcard}
+    \vskip 3pt
+    {\tiny\color{TextMuted}Median OS not reached in pembro arm at interim analysis; median follow-up 11.2 months.\par}
+  \end{column}
+
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{AlertRed!70}
+      {\scriptsize\textbf{\color{AlertRed}CROSS-OVER DILUTION SENSITIVITY}}
+      \vskip 3pt
+      \tiny
+      \textbf{The Intention-to-Treat Challenge:}\\
+      \textbullet\ \textbf{43.7\% (66/151)} chemotherapy patients crossed over to pembrolizumab on-study upon progression.\\
+      \textbullet\ Additional \textbf{7.9\% (12 patients)} received off-study anti-PD-(L)1 therapy ($>$50\% effective cross-over).\\
+      \textbullet\ In standard ITT analysis, control patients receiving salvage immunotherapy artificially improve the control arm curve, compressing the observed HR.\\[3pt]
+      \textbf{RPSFT Counterfactual Adjustment:}\\
+      Adjusting for cross-over using Rank-Preserving Structural Failure Time modeling reveals an un-confounded HR of \textbf{$\sim$0.49}.\\[2pt]
+      \textbf{Clinical Takeaway:} Frontline initiation is essential; delayed second-line use cannot fully recover lost survival benefit.
+    \end{statcard}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ==================== SLIDE 6: ORR & DURATION OF RESPONSE ====================
+\begin{frame}{Slide 6: Secondary Efficacy: Response Rate \& Duration}
+\begin{actionbanner}
+Pembrolizumab Produced Significantly Higher Objective Responses with Unprecedented Response Durability
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{BorderGray}
+      {\scriptsize\textbf{\color{DeepNavy}OBJECTIVE RESPONSE RATE (ORR)}}\\[2pt]
+      \scriptsize
+      \textbf{\color{MedTeal}Pembrolizumab: 44.8\%} \tiny(95\% CI: 36.8--53.0)\\
+      \textbf{\color{AlertRed}Chemotherapy: 27.8\%} \tiny(95\% CI: 20.8--35.7)\\[2pt]
+      \footnotesize\textbf{\color{DeepNavy}Difference: +17.0\%} \quad \scriptsize\textbf{(P = 0.0011)}\\[3pt]
+      \hrule height 0.4pt\vskip 3pt
+      \tiny
+      \textbf{Depth of Response:}\\
+      \textbullet\ Complete Response (CR): \textbf{3.9\% (6 pts)} vs. 0.7\% (1 pt)\\
+      \textbullet\ Partial Response (PR): \textbf{40.9\% (63 pts)} vs. 27.2\% (41 pts)\\
+      \textbullet\ Stable Disease (SD): 26.6\% vs. 44.4\%
+    \end{statcard}
+  \end{column}
+
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{MedTeal}
+      {\scriptsize\textbf{\color{DeepNavy}DURATION OF RESPONSE (DOR)}}\\[2pt]
+      \scriptsize
+      \textbf{\color{MedTeal}Pembrolizumab: NOT REACHED} \tiny(1.9+ to 14.5+ mo)\\
+      \textbf{\color{AlertRed}Chemotherapy: 6.3 Months} \tiny(2.1+ to 12.6+ mo)\\[3pt]
+      \hrule height 0.4pt\vskip 3pt
+      \tiny
+      \textbf{Kinetics \& Persistence of Response:}\\
+      \textbullet\ \textbf{Rapid Onset:} Median time to response was \textbf{2.2 months in both arms} (dispelling myth that immunotherapy is slow to act).\\[2pt]
+      \textbullet\ \textbf{Immunological Memory:} At data cutoff, \textbf{88\% of responders} on pembrolizumab remained in ongoing response vs. only \textbf{54\%} on chemotherapy.
+    \end{statcard}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ==================== SLIDE 7: SAFETY & TOLERABILITY ====================
+\begin{frame}{Slide 7: Safety Profile \& Active imAE Management}
+\begin{actionbanner}
+Pembrolizumab Halved Severe High-Grade Toxicities, Featuring a Manageable and Reversible Immune Safety Profile
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{BorderGray}
+      {\scriptsize\textbf{\color{DeepNavy}OVERALL TRAE SUMMARY}}
+      \vskip 2pt
+      \tiny
+      \begin{tabular}{lcc}
+        \toprule
+        \textbf{Adverse Event Metric} & \textbf{Pembro (n=154)} & \textbf{Chemo (n=150)} \\
+        \midrule
+        Any-Grade TRAEs & 73.4\% & 90.0\% \\
+        \textbf{Grade 3--5 TRAEs} & \textbf{26.6\%} & \textbf{53.3\%} \\
+        Discontinuations for TRAE & 7.1\% & 10.7\% \\
+        Treatment-Related Deaths & \textbf{0\% (0 pts)} & \textbf{2.0\% (3 pts)} \\
+        \bottomrule
+      \end{tabular}
+      \vskip 3pt
+      \textbf{Elimination of Cytotoxic Toxicities:}\\
+      Nausea (10.4\% vs 43.3\%) \quad Anemia (5.2\% vs 34.0\%)\\
+      Neutropenia (0\% vs 13.3\%) \quad Alopecia (0\% vs $\sim$30\%)
+    \end{statcard}
+  \end{column}
+
+  \begin{column}{0.485\textwidth}
+    \begin{statcard}{AlertRed!70}
+      {\scriptsize\textbf{\color{AlertRed}IMMUNE PNEUMONITIS MANAGEMENT}}
+      \vskip 2pt
+      \tiny
+      \textbf{Incidence:} Overall: \textbf{5.8\% (9 pts)}; Grade 3--5: \textbf{2.6\% (4 pts)}; 0 deaths.\\[2pt]
+      \textbf{Protocol Action Algorithm:}
+      \begin{itemize}\tiny\setlength{\itemsep}{1pt}
+        \item \textbf{Grade 1 (Asymptomatic):} Monitor; repeat chest CT at 2--3 weeks.
+        \item \textbf{Grade 2 (Dyspnea/Cough):} Withhold pembro; rule out infection; oral prednisone (1--2 mg/kg/day); \textbf{taper slowly over $\ge$4 weeks} to prevent rebound.
+        \item \textbf{Grade 3--4 (Hypoxia/Severe):} Permanently discontinue; IV methylprednisolone (1--2 mg/kg/day); hospitalize.
+      \end{itemize}
+      \vskip 1pt
+      \textbf{Reassurance:} Reversible in $>$80\% without blunting efficacy.
+    \end{statcard}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ==================== SLIDE 8: CLINICAL CONCLUSIONS ====================
+\begin{frame}{Slide 8: Clinical Conclusions \& Paradigm Shift}
+\begin{actionbanner}
+KEYNOTE-024 Redefined First-Line Care: Pembrolizumab Monotherapy Established as Standard in PD-L1 TPS $\ge 50\%$ NSCLC
+\end{actionbanner}
+
+\vspace{2pt}
+
+\begin{columns}[T]
+  \begin{column}{0.315\textwidth}
+    \begin{statcard}{MedTeal}
+      \centering
+      {\scriptsize\textbf{\color{MedTeal}EFFICACY REDEFINED}}\\[3pt]
+      \tiny
+      \textbullet\ \textbf{PFS Doubled:} 10.3 vs 6.0 mo (HR 0.50, P$<$0.001)\\[2pt]
+      \textbullet\ \textbf{OS Advantage:} HR 0.60 despite $>$50\% cross-over\\[2pt]
+      \textbullet\ \textbf{Durable Responses:} Median DOR not reached; 88\% ongoing
+    \end{statcard}
+  \end{column}
+
+  \begin{column}{0.315\textwidth}
+    \begin{statcard}{DeepNavy!50}
+      \centering
+      {\scriptsize\textbf{\color{DeepNavy}TOLERABILITY ELEVATED}}\\[3pt]
+      \tiny
+      \textbullet\ \textbf{Halved Severe Events:} Grade 3--5 TRAEs 26.6\% vs 53.3\%\\[2pt]
+      \textbullet\ \textbf{Chemo Morbidity Reduced:} Zero alopecia / neutropenic sepsis\\[2pt]
+      \textbullet\ \textbf{Manageable imAEs:} Algorithmic steroid management
+    \end{statcard}
+  \end{column}
+
+  \begin{column}{0.315\textwidth}
+    \begin{statcard}{BorderGray}
+      \centering
+      {\scriptsize\textbf{\color{DeepNavy}DIAGNOSTIC MANDATE}}\\[3pt]
+      \tiny
+      \textbullet\ \textbf{Upfront Reflex Testing:} Mandatory PD-L1 IHC 22C3 alongside EGFR/ALK\\[2pt]
+      \textbullet\ \textbf{1 in 3 Patients:} TPS $\ge 50\%$ identifies frontline chemo-free candidates
+    \end{statcard}
+  \end{column}
+\end{columns}
+
+\vspace{3pt}
+
+\begin{calloutcard}
+  \centering\scriptsize\color{DeepNavy}
+  \textbf{Practice Paradigm:} Chemotherapy-free first-line management with single-agent pembrolizumab is established as the preferred Category 1 NCCN / ESMO standard of care for PD-L1 TPS $\ge 50\%$ advanced NSCLC.
+\end{calloutcard}
+\end{frame}
+
+\end{document}
