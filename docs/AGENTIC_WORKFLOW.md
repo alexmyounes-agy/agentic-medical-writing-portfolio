@@ -157,11 +157,3 @@ The repository's primary `README.md` should be structured to impress both **Biot
      ```
 
 ---
-
-## 5. Talking Points for Technical Interviews & Portfolios
-
-When presenting this repository to prospective employers, highlight the following workflow competencies:
-
-1. **Defensive Data Architecture:** "I do not allow AI to generate slide numbers from memory. We established an audited CSV data matrix first; every statistic on every slide has a verifiable cell provenance tying back to the primary paper."
-2. **Autonomous Build & Verification Loop:** "I paired with Antigravity to run a full compile-render-inspect feedback loop. When the layout exhibited overfull vboxes and TikZ vertical alignment collisions, the agent autonomously diagnosed the LaTeX bounding box mechanism and refactored the presentation into a robust `tcolorbox` skin architecture."
-3. **Medical Writing Rigor with Engineering Automation:** "This project demonstrates that modern medical writing is not just writing prose—it is managing information architecture, verifying regulatory claims, and using agentic developer tools to produce publication-grade assets at 10x speed with 100% accuracy."
